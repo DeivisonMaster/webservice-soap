@@ -1,6 +1,6 @@
 package br.com.devmedia.ws.soap;
 
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -15,17 +15,17 @@ public class PrimeiroSoapWS {
 
 	
 	@WebMethod
-	public String ping(@WebParam(name = "nome") @NotNull String nome) {
-		return "Pong ! " + nome;
+	public String buscaNome(@WebParam(name = "nome") @NotNull String nome) {
+		return "Nome: " + nome;
 	}
 	
 	
-	@WebMethod(operationName = "MeDeMinhaIdadePorFavor", exclude = true)
+	@WebMethod(operationName = "consultaIdade", exclude = true)
 	public Integer getAge() {
 		return new Random().nextInt();	
 	}
 	
-	
+	@WebMethod(operationName = "primeiraLista")
 	public List<String> getMinhaPrimeiraLista(){
 		List<String> items = new LinkedList<>();
 		
@@ -33,16 +33,16 @@ public class PrimeiroSoapWS {
 		items.add("Meu item 2");
 		items.add("Meu item 3");
 		items.add("Meu item 4");
-		items.add("Meu item 5");
+		items.add("Deivison");
 		
 		return items;
 	}
 	
-	
+	@WebMethod(operationName = "listaCarros")
 	public List<Carro> getMeusCarros(){
 		List<Carro> carros = new LinkedList<>();
 		
-		carros.add(new Carro("Renault", "Mégane GT", TipoCor.BRANCO));
+		carros.add(new Carro("Ferrari", "Mégane GT", TipoCor.BRANCO));
 		carros.add(new Carro("Ford", "KA", TipoCor.VERMELHO));
 		
 		return carros;
